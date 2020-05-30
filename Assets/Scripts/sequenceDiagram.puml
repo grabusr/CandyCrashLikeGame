@@ -1,0 +1,17 @@
+@startuml
+actor Player
+
+ICandyCrashLikeView <- GameController : init
+
+loop
+    Player -> GameController : provide two elements to swap
+    GameController -> ICandyCrashLikeModel : swapElements(elements)
+    alt successful case
+        GameController <-- ICandyCrashLikeModel : swap result
+        ICandyCrashLikeView <- GameController : inform about swap result
+    else invalid swap data
+        GameController <-- ICandyCrashLikeModel : null
+    end
+end
+
+@enduml

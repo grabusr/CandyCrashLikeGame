@@ -1,0 +1,30 @@
+@startuml
+interface ICandyCrashLikeModel
+interface IRandomGenerator
+interface ICandyCrashLikeView
+interface IGameModelInfo
+
+class LocalCandyCrashLikeModel
+class GameController
+class GameConfig
+class CandyCrashLikeBoard
+
+class GameObject
+
+ICandyCrashLikeModel <|-- LocalCandyCrashLikeModel
+IGameModelInfo <|-- ICandyCrashLikeModel
+
+GameController *-- ICandyCrashLikeModel
+
+GameController *-- ICandyCrashLikeView
+
+LocalCandyCrashLikeModel *-- IRandomGenerator
+
+LocalCandyCrashLikeModel *-- GameConfig
+
+ICandyCrashLikeView <|-- CandyCrashLikeBoard
+
+CandyCrashLikeBoard *-- GameObject
+
+ICandyCrashLikeView o-- IGameModelInfo
+@enduml
