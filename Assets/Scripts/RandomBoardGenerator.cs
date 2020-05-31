@@ -10,7 +10,7 @@ namespace LocalModel
         IRandomTypeProvider randomTypeProvider;
         IGameConfig gameConfig;
 
-        RandomBoardGenerator(IRandomTypeProvider randomTypeProvider, IGameConfig gameConfig)
+        public RandomBoardGenerator(IRandomTypeProvider randomTypeProvider, IGameConfig gameConfig)
         {
             this.randomTypeProvider = randomTypeProvider;
             this.gameConfig = gameConfig;
@@ -18,8 +18,8 @@ namespace LocalModel
 
         public Board CreateBoard()
         {
-            var rowsCount = gameConfig.BoardWidth;
-            var columnsCount = gameConfig.BoardHeight;
+            var rowsCount = gameConfig.RowsCount;
+            var columnsCount = gameConfig.ColumnsCount;
             board = new Board(rowsCount, columnsCount);
 
             for (var row = 0; row < rowsCount; ++row)
@@ -40,25 +40,25 @@ namespace LocalModel
             var toAvoidMatch3Horizontally = GetForbiddenTypeForBehindVertical(row, column);
 
             var allowedPool = new List<BlockData>();
-            foreach (var type in gameConfig.TypesPool)
+            foreach (var blockData in gameConfig.BlockDataPool)
             {
-                if (type == toAvoidMatch3Vertically || type == toAvoidMatch3Horizontally)
+                if (blockData.Type == toAvoidMatch3Vertically || blockData.Type == toAvoidMatch3Horizontally)
                 {
                     continue;
                 }
-                allowedPool.Add(new BlockData(type));
+                allowedPool.Add(blockData);
             }
             return allowedPool;
         }
 
-        private int GetForbiddenTypeForBehindHorizontal(int column, int row)
+        private int GetForbiddenTypeForBehindHorizontal(int row, int column)
         {
             if (column < 2)
             {
                 return invalidType;
             }
-            var twoBehindType = board[column - 2, row].Type;
-            var oneBehindType = board[column - 1, row].Type;
+            var twoBehindType = board[row, column].Type;
+            var oneBehindType = board[row, column - 1].Type;
             return oneBehindType == twoBehindType ? oneBehindType : invalidType;
         }
 
@@ -68,8 +68,8 @@ namespace LocalModel
             {
                 return invalidType;
             }
-            var twoBehindType = board[column, row - 2].Type;
-            var oneBehindType = board[column, row - 1].Type;
+            var twoBehindType = board[row - 2, column].Type;
+            var oneBehindType = board[row - 1, column].Type;
             return oneBehindType == twoBehindType ? oneBehindType : invalidType;
         }
     }

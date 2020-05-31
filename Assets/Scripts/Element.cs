@@ -1,21 +1,19 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace view
 {
     public class Element : MonoBehaviour
     {
+        [SerializeField]
         private SpriteRenderer spriteRenderer;
         private Color destinationColor;
 
-        void Start()
+        public void SetColor(Color color)
         {
-            spriteRenderer = GetComponent<SpriteRenderer>();
-        }
-
-        void SetColor(Color color)
-        {
+            if (null == spriteRenderer)
+            {
+                return;
+            }
             spriteRenderer.color = color;
         }
     }

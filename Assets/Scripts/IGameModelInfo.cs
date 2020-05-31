@@ -2,8 +2,9 @@
 {
     public interface IGameModelInfo
     {
-        int BoardWidth { get; }
-        int BoardHeight { get; }
+        int ColumnsCount { get; }
+        int RowsCount { get; }
+        BlockData[,] Board { get; }
     }
 
 } // namespace core

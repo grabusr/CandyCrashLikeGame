@@ -30,19 +30,16 @@ namespace core
                 return false;
             }
 
-            foreach (var result in swapResults)
-            {
-                InformViewsAboutMoveResult(result);
-            }
+            InformViewsAboutMoveResult(swapResults);
 
             return true;
         }
 
-        private void InformViewsAboutMoveResult(MoveResult moveResult)
+        private void InformViewsAboutMoveResult(MoveResult[] moveResults)
         {
             foreach (var view in gameViews)
             {
-                view.OnMoveEvent(moveResult);
+                view.OnMoveEvent(moveResults);
             }
         }
     }

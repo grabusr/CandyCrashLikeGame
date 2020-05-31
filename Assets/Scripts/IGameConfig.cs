@@ -4,9 +4,9 @@ namespace LocalModel
 {
     public interface IGameConfig
     {
-        int BoardWidth { get; }
-        int BoardHeight { get; }
-        int[] TypesPool { get; }
+        int RowsCount { get; }
+        int ColumnsCount { get; }
+        core.BlockData[] BlockDataPool { get; }
         int Seed { get; }
     }
 }

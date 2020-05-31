@@ -7,8 +7,8 @@ namespace LocalModel
     public class Board
     {
         private BlockData[,] fields;
-        private int rowsCount;
-        private int columnsCount;
+        private readonly int rowsCount;
+        private readonly int columnsCount;
 
         public Board(int rowsCount, int columnsCount)
         {

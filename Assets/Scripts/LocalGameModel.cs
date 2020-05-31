@@ -14,8 +14,25 @@ namespace LocalModel
             board = boardProvider.CreateBoard();
         }
 
-        public int BoardWidth => board.RowsCount;
-        public int BoardHeight => board.ColumnsCount;
+        public int RowsCount => board.RowsCount;
+        public int ColumnsCount => board.ColumnsCount;
+
+        public BlockData[,] Board {
+            get
+            {
+                var blockDataBoard = new BlockData[RowsCount, ColumnsCount];
+
+                for (var row = 0; row < RowsCount; ++row)
+                {
+                    for (var column = 0; column < ColumnsCount; ++column)
+                    {
+                        blockDataBoard[row, column] = board[row, column];
+                    }
+                }
+
+                return blockDataBoard;
+            }
+        }
 
         public MoveResult[] SwapElements(SwapData swapData)
         {

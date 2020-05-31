@@ -9,14 +9,14 @@ namespace LocalModel
     {
         private Random randomDevice;
 
-        SeededRandomTypeProvider(int seed)
+        public SeededRandomTypeProvider(int seed)
         {
             randomDevice = new Random(seed);
         }
 
         public BlockData GetRandomElementType(List<BlockData> typesPool)
         {
-            var randomIndex = randomDevice.Next(0, typesPool.Count - 1);
+            var randomIndex = randomDevice.Next(0, typesPool.Count);
             return typesPool[randomIndex];
         }
     }
