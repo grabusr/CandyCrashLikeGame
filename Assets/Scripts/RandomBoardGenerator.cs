@@ -36,13 +36,14 @@ namespace LocalModel
 
         private List<BlockData> GetAllowedTypesForField(int row, int column)
         {
-            var toAvoidMatch3Vertically = GetForbiddenTypeForBehindVertical(row, column);
+            var toAvoidMatch3Vertically = GetForbiddenTypeForBehindHorizontal(row, column);
             var toAvoidMatch3Horizontally = GetForbiddenTypeForBehindVertical(row, column);
 
             var allowedPool = new List<BlockData>();
             foreach (var blockData in gameConfig.BlockDataPool)
             {
-                if (blockData.Type == toAvoidMatch3Vertically || blockData.Type == toAvoidMatch3Horizontally)
+                if (blockData.Type == toAvoidMatch3Vertically
+                    || blockData.Type == toAvoidMatch3Horizontally)
                 {
                     continue;
                 }
@@ -57,7 +58,7 @@ namespace LocalModel
             {
                 return invalidType;
             }
-            var twoBehindType = board[row, column].Type;
+            var twoBehindType = board[row, column - 2].Type;
             var oneBehindType = board[row, column - 1].Type;
             return oneBehindType == twoBehindType ? oneBehindType : invalidType;
         }
