@@ -24,6 +24,8 @@ namespace view
         private GameController gameController;
         private List<Element> animatedElements = new List<Element>();
 
+        private List<Element> elementsToDestroy = new List<Element>();
+
         private Queue<List<IBlockAnimator>> animators = new Queue<List<IBlockAnimator>>();
 
         public void Start()
@@ -177,10 +179,26 @@ namespace view
         public void AnimationEnded(Element element)
         {
             animatedElements.Remove(element);
-            if (animatedElements.Count == 0 && animators.Count != 0)
+            if (animatedElements.Count == 0)
             {
-                RunAnimatorsFromQueue();
+                if (AreAnimationsInQueue())
+                {
+                    RunAnimatorsFromQueue();
+                }
+                else
+                {
+                    foreach (var toDestroy in elementsToDestroy)
+                    {
+                        Destroy(toDestroy);
+                    }
+                }
+
             }
+        }
+
+        private bool AreAnimationsInQueue()
+        {
+            return animators.Count != 0;
         }
 
         private bool IsAnimating()
@@ -200,6 +218,10 @@ namespace view
         public void DestroyBlock(Coordinate coordinate)
         {
             var element = GetElementAtCoordinate(coordinate);
+            if (element == null)
+            {
+                return;
+            }
             animatedElements.Add(element);
             element.AnimateDestroy();
             blockElements.Remove(element);

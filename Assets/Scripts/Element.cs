@@ -69,7 +69,6 @@ namespace view
             StartCoroutine(AnimateScaing(new Vector3(1.0F, 1.0F, 1.0F),
                                          new Vector3(0.0F, 0.0F, 0.0F),
                                          destroyTime));
-            //Destroy(this, destroyTime);
         }
 
         IEnumerator AnimateScaing(Vector3 from, Vector3 to, float duration)

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 using core;
 
@@ -60,22 +61,24 @@ namespace LocalModel
             for (var row = 0; row < RowsCount; ++row)
             {
                 var verticalMatch = new List<Coordinate>();
-                var type = fields[row, 0].Type;
+                var matchType = fields[row, 0].Type;
                 for (var column = 0; column < ColumnsCount; ++column)
                 {
                     var nextType = fields[row, column].Type;
-                    if (nextType == type)
+                    if (verticalMatch.Count == 0)
                     {
-                        verticalMatch.Add(new Coordinate(row, column));
+                        matchType = nextType;
                     }
-                    else
+                    if (nextType != matchType)
                     {
                         if (verticalMatch.Count >= minimalBlockCount)
                         {
                             matches.Add(verticalMatch.ToArray());
                         }
                         verticalMatch.Clear();
+                        matchType = nextType;
                     }
+                    verticalMatch.Add(new Coordinate(row, column));
                 }
                 if (verticalMatch.Count >= minimalBlockCount)
                 {
@@ -92,26 +95,24 @@ namespace LocalModel
             for (var column = 0; column < ColumnsCount; ++column)
             {
                 var horizontalMatch = new List<Coordinate>();
-                var type = fields[0, column].Type;
+                var matchType = fields[0, column].Type;
                 for (var row = 0; row < RowsCount; ++row)
                 {
                     var nextType = fields[row, column].Type;
                     if (horizontalMatch.Count == 0)
                     {
-                        type = nextType;
+                        matchType = nextType;
                     }
-                    if (nextType == type)
-                    {
-                        horizontalMatch.Add(new Coordinate(row, column));
-                    }
-                    else
+                    if (nextType != matchType)
                     {
                         if (horizontalMatch.Count >= minimalBlockCount)
                         {
                             matches.Add(horizontalMatch.ToArray());
                         }
                         horizontalMatch.Clear();
+                        matchType = nextType;
                     }
+                    horizontalMatch.Add(new Coordinate(row, column));
                 }
                 if (horizontalMatch.Count >= minimalBlockCount)
                 {
@@ -141,7 +142,17 @@ namespace LocalModel
                         continue;
                     }
                     var emptyPosition = new Coordinate(row, column);
-                    var swappedPosition = new Coordinate(row + 1, column);
+                    var upRow = row + 1;
+                    while (upRow < RowsCount
+                        && fields[upRow, column].Type == BlockData.invalidColorId)
+                    {
+                        ++upRow;
+                    }
+                    if (upRow == RowsCount)
+                    {
+                        continue;
+                    }
+                    var swappedPosition = new Coordinate(upRow, column);
                     SwapFields(emptyPosition, swappedPosition);
                     moveElementData.Add(new MoveElementData(swappedPosition, emptyPosition));
                 }

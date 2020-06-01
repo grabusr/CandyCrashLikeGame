@@ -4,7 +4,6 @@ using core;
 
 namespace LocalModel
 {
-
     public class LocalGameModel : ICandyCrashLikeModel
     {
         IBlockDataProvider blockProvider;
@@ -55,23 +54,31 @@ namespace LocalModel
                 board.SwapFields(swapData.First, swapData.Second);
                 return null;
             }
-                        
-            var movedByGravityElements = board.RemoveBlocks(matches);
-            var emptyFields = board.GetEmptyFields();
 
-            var spawnedBlocks = new List<Block>();
-            foreach (var field in emptyFields)
+            var moveResults = new List<MoveResult>
             {
-                var blockData = GetNewBlockData();
-                board[field] = blockData;
-                spawnedBlocks.Add(new Block(field, blockData));
-            }
+                CreateSwapResult(swapData)
+            };
 
-            var moveResults = new List<MoveResult>();
-            moveResults.Add(CreateSwapResult(swapData));
-            moveResults.Add(CreateMatchDestroyResult(movedByGravityElements,
+            while (matches.Count != 0)
+            {
+                var movedByGravityElements = board.RemoveBlocks(matches);
+                var emptyFields = board.GetEmptyFields();
+
+                var spawnedBlocks = new List<Block>();
+                foreach (var field in emptyFields)
+                {
+                    var blockData = GetNewBlockData();
+                    board[field] = blockData;
+                    spawnedBlocks.Add(new Block(field, blockData));
+                }
+
+                moveResults.Add(CreateMatchDestroyResult(movedByGravityElements,
                                                      matches,
                                                      spawnedBlocks));
+
+                matches = board.GetMatches(minimalElementsCountMatch);
+            }
 
             return moveResults;
         }
