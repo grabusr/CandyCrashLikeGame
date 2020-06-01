@@ -1,8 +1,8 @@
 ﻿using NUnit.Framework;
 using System.Collections.Generic;
-using core;
+using QuickTurnStudio.CandyCrashLike.Core;
 
-namespace LocalModel.Tests
+namespace QuickTurnStudio.CandyCrashLike.LocalModel.Tests
 {
     public class BoardTests
     {
@@ -17,20 +17,20 @@ namespace LocalModel.Tests
             // 2 0 1
             // 1 1 0
             var sut = new Board(rowsCount, columnsCount);
-            sut[0, 0] = new core.BlockData(1);
-            sut[0, 1] = new core.BlockData(1);
-            sut[0, 2] = new core.BlockData(0);
+            sut[0, 0] = new BlockData(1);
+            sut[0, 1] = new BlockData(1);
+            sut[0, 2] = new BlockData(0);
 
-            sut[1, 0] = new core.BlockData(2);
-            sut[1, 1] = new core.BlockData(0);
-            sut[1, 2] = new core.BlockData(1);
+            sut[1, 0] = new BlockData(2);
+            sut[1, 1] = new BlockData(0);
+            sut[1, 2] = new BlockData(1);
 
-            sut[2, 0] = new core.BlockData(0);
-            sut[2, 1] = new core.BlockData(2);
-            sut[2, 2] = new core.BlockData(0);
+            sut[2, 0] = new BlockData(0);
+            sut[2, 1] = new BlockData(2);
+            sut[2, 2] = new BlockData(0);
 
             // when:
-            sut.SwapFields(new core.Coordinate(1, 0), new core.Coordinate(1, 1));
+            sut.SwapFields(new Coordinate(1, 0), new Coordinate(1, 1));
 
             // then:
             // 0 2 0
@@ -58,18 +58,18 @@ namespace LocalModel.Tests
             // 2 0 1 1
             // 1 1 0 2
             var sut = new Board(rowsCount, columnsCount);
-            sut[0, 0] = new core.BlockData(1);
-            sut[0, 1] = new core.BlockData(1);
-            sut[0, 2] = new core.BlockData(0);
-            sut[0, 3] = new core.BlockData(2);
+            sut[0, 0] = new BlockData(1);
+            sut[0, 1] = new BlockData(1);
+            sut[0, 2] = new BlockData(0);
+            sut[0, 3] = new BlockData(2);
 
-            sut[1, 0] = new core.BlockData(2);
-            sut[1, 1] = new core.BlockData(0);
-            sut[1, 2] = new core.BlockData(1);
-            sut[1, 3] = new core.BlockData(1);
+            sut[1, 0] = new BlockData(2);
+            sut[1, 1] = new BlockData(0);
+            sut[1, 2] = new BlockData(1);
+            sut[1, 3] = new BlockData(1);
 
             // when:
-            sut.SwapFields(new core.Coordinate(0, 3), new core.Coordinate(1, 3));
+            sut.SwapFields(new Coordinate(0, 3), new Coordinate(1, 3));
 
             // then:
             // 2 0 1 2
@@ -96,17 +96,17 @@ namespace LocalModel.Tests
             // 2 0 0
             // 1 1 1
             var sut = new Board(rowsCount, columnsCount);
-            sut[0, 0] = new core.BlockData(1);
-            sut[0, 1] = new core.BlockData(1);
-            sut[0, 2] = new core.BlockData(1);
+            sut[0, 0] = new BlockData(1);
+            sut[0, 1] = new BlockData(1);
+            sut[0, 2] = new BlockData(1);
 
-            sut[1, 0] = new core.BlockData(2);
-            sut[1, 1] = new core.BlockData(0);
-            sut[1, 2] = new core.BlockData(0);
+            sut[1, 0] = new BlockData(2);
+            sut[1, 1] = new BlockData(0);
+            sut[1, 2] = new BlockData(0);
 
-            sut[2, 0] = new core.BlockData(0);
-            sut[2, 1] = new core.BlockData(2);
-            sut[2, 2] = new core.BlockData(2);
+            sut[2, 0] = new BlockData(0);
+            sut[2, 1] = new BlockData(2);
+            sut[2, 2] = new BlockData(2);
 
             // when:
             var matches = sut.GetMatches(minimalMatchCount);
@@ -168,19 +168,19 @@ namespace LocalModel.Tests
             // 2 0
             // 1 1
             var sut = new Board(rowsCount, columnsCount);
-            sut[0, 0] = new core.BlockData(1);
-            sut[0, 1] = new core.BlockData(1);
+            sut[0, 0] = new BlockData(1);
+            sut[0, 1] = new BlockData(1);
             
-            sut[1, 0] = new core.BlockData(2);
-            sut[1, 1] = new core.BlockData(0);
+            sut[1, 0] = new BlockData(2);
+            sut[1, 1] = new BlockData(0);
 
-            sut[2, 0] = new core.BlockData(0);
-            sut[2, 1] = new core.BlockData(2);
+            sut[2, 0] = new BlockData(0);
+            sut[2, 1] = new BlockData(2);
 
-            var expectedMove1 = new core.MoveElementData(new core.Coordinate(1, 0), new core.Coordinate(0, 0));
-            var expectedMove2 = new core.MoveElementData(new core.Coordinate(1, 1), new core.Coordinate(0, 1));
-            var expectedMove3 = new core.MoveElementData(new core.Coordinate(2, 0), new core.Coordinate(1, 0));
-            var expectedMove4 = new core.MoveElementData(new core.Coordinate(2, 1), new core.Coordinate(1, 1));
+            var expectedMove1 = new MoveElementData(new Coordinate(1, 0), new Coordinate(0, 0));
+            var expectedMove2 = new MoveElementData(new Coordinate(1, 1), new Coordinate(0, 1));
+            var expectedMove3 = new MoveElementData(new Coordinate(2, 0), new Coordinate(1, 0));
+            var expectedMove4 = new MoveElementData(new Coordinate(2, 1), new Coordinate(1, 1));
 
             var matches = sut.GetMatches(matchCount);
 
@@ -195,8 +195,8 @@ namespace LocalModel.Tests
             Assert.AreEqual(0, sut[0, 1].Type);
             Assert.AreEqual(0, sut[1, 0].Type);
             Assert.AreEqual(2, sut[1, 1].Type);
-            Assert.AreEqual(core.BlockData.invalidColorId, sut[2, 0].Type);
-            Assert.AreEqual(core.BlockData.invalidColorId, sut[2, 1].Type);
+            Assert.AreEqual(BlockData.invalidColorId, sut[2, 0].Type);
+            Assert.AreEqual(BlockData.invalidColorId, sut[2, 1].Type);
 
             Assert.AreEqual(4, movedElements.Length);
 
@@ -221,8 +221,8 @@ namespace LocalModel.Tests
                 new int[]{ 4, 2, },
             };
 
-            var expectedMove1 = new core.MoveElementData(new core.Coordinate(4, 0), new core.Coordinate(1, 0));
-            var expectedMove2 = new core.MoveElementData(new core.Coordinate(5, 0), new core.Coordinate(2, 0));
+            var expectedMove1 = new MoveElementData(new Coordinate(4, 0), new Coordinate(1, 0));
+            var expectedMove2 = new MoveElementData(new Coordinate(5, 0), new Coordinate(2, 0));
 
             var sut = CreateBoardWithElements(types);
             var matches = sut.GetMatches(minimalMatchCount);
@@ -241,9 +241,9 @@ namespace LocalModel.Tests
             Assert.AreEqual(4, sut[0, 0].Type);
             Assert.AreEqual(3, sut[1, 0].Type);
             Assert.AreEqual(2, sut[2, 0].Type);
-            Assert.AreEqual(core.BlockData.invalidColorId, sut[3, 0].Type);
-            Assert.AreEqual(core.BlockData.invalidColorId, sut[4, 0].Type);
-            Assert.AreEqual(core.BlockData.invalidColorId, sut[5, 0].Type);
+            Assert.AreEqual(BlockData.invalidColorId, sut[3, 0].Type);
+            Assert.AreEqual(BlockData.invalidColorId, sut[4, 0].Type);
+            Assert.AreEqual(BlockData.invalidColorId, sut[5, 0].Type);
 
             Assert.AreEqual(2, sut[0, 1].Type);
             Assert.AreEqual(2, sut[1, 1].Type);
@@ -272,4 +272,4 @@ namespace LocalModel.Tests
         }
     }
 
-} // namespace LocalModel.Tests
+}

@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-using core;
+using QuickTurnStudio.CandyCrashLike.Core;
 
-namespace view
+namespace QuickTurnStudio.CandyCrashLike.UnityView
 {
     public class Element : MonoBehaviour
     {
@@ -11,7 +11,7 @@ namespace view
         [SerializeField] private float spawnTime = 0.8F;
         [SerializeField] private float destroyTime = 0.43F;
 
-        private GameConfig gameConfig;
+        private Config.GameConfig gameConfig;
 
         private BlockData blockData;
         private IBoardView view;
@@ -30,7 +30,7 @@ namespace view
             boardController = controller;
         }
 
-        public void SetGameConfig(GameConfig gameConfig)
+        public void SetGameConfig(Config.GameConfig gameConfig)
         {
             this.gameConfig = gameConfig;
         }

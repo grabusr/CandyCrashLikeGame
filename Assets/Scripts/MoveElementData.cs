@@ -1,4 +1,4 @@
-﻿namespace core
+﻿namespace QuickTurnStudio.CandyCrashLike.Core
 {
     public class MoveElementData
     {
@@ -33,4 +33,4 @@
                 && Destination.Equals(moveElementData.Destination);
         }
     }
-} // namespace core
+}

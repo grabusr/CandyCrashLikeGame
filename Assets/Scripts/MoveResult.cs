@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace core
+namespace QuickTurnStudio.CandyCrashLike.Core
 {
     public class MoveResult
     {
@@ -22,4 +22,4 @@ namespace core
             this.spawnedElements = spawnedElements;
         }
     }
-} // namespace core
+}

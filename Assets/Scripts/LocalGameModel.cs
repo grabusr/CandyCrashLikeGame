@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System;
-using core;
+using QuickTurnStudio.CandyCrashLike.Core;
 
-namespace LocalModel
+namespace QuickTurnStudio.CandyCrashLike.LocalModel
 {
     public class LocalGameModel : ICandyCrashLikeModel
     {
@@ -117,5 +117,4 @@ namespace LocalModel
             return blockProvider.GetBlockData();
         }
     }
-
-} // namespace LocalModel
+}

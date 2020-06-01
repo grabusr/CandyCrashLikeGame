@@ -1,6 +1,4 @@
-﻿using core;
-
-namespace LocalModel
+﻿namespace QuickTurnStudio.CandyCrashLike.LocalModel
 {
     public interface IBoardProvider
     {

@@ -1,4 +1,4 @@
-﻿namespace core
+﻿namespace QuickTurnStudio.CandyCrashLike.Core
 {
     public class SwapData
     {
@@ -29,4 +29,4 @@
             get => second;
         }
     }
-} // namespace core
+}

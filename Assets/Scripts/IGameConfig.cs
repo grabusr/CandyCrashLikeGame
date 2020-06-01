@@ -1,12 +1,10 @@
-﻿using System.Collections.Generic;
-
-namespace LocalModel
+﻿namespace QuickTurnStudio.CandyCrashLike.LocalModel
 {
     public interface IGameConfig
     {
         int RowsCount { get; }
         int ColumnsCount { get; }
-        core.BlockData[] BlockDataPool { get; }
+        Core.BlockData[] BlockDataPool { get; }
         int Seed { get; }
     }
 }

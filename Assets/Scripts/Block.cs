@@ -1,36 +1,24 @@
-﻿using System;
-
-namespace core
+﻿namespace QuickTurnStudio.CandyCrashLike.Core
 {
     public struct Block
     {
-        private readonly Coordinate coordinate;
-        private readonly BlockData blockData;
-        
+        public Coordinate Coord { get; }
+        public BlockData BlockData { get; }
+
         public Block(Coordinate coordinate, BlockData blockData)
         {
-            this.coordinate = coordinate;
-            this.blockData = blockData;
+            this.Coord = coordinate;
+            this.BlockData = blockData;
         }
-        
+
         public int Column
         {
-            get => coordinate.Column;
+            get => Coord.Column;
         }
 
         public int Row
         {
-            get => coordinate.Row;
-        }
-
-        public Coordinate Coord
-        {
-            get => coordinate;
-        }
-
-        public BlockData BlockData
-        {
-            get => blockData;
+            get => Coord.Row;
         }
     }
-} // namespace core
+}

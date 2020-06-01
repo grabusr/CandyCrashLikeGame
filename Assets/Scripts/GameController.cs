@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace core
+namespace QuickTurnStudio.CandyCrashLike.Core
 {
     public class GameController
     {

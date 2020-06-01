@@ -1,6 +1,6 @@
-﻿using core;
+﻿using QuickTurnStudio.CandyCrashLike.Core;
 
-namespace view
+namespace QuickTurnStudio.CandyCrashLike.UnityView
 {
     public interface IAnimatedView
     {

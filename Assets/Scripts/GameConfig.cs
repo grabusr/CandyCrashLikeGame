@@ -1,41 +1,42 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using LocalModel;
-using core;
+﻿using UnityEngine;
+using QuickTurnStudio.CandyCrashLike.Core;
+using QuickTurnStudio.CandyCrashLike.LocalModel;
 
-public class GameConfig : MonoBehaviour, IGameConfig
+namespace QuickTurnStudio.CandyCrashLike.Config
 {
-    [SerializeField]
-    private int rowsCount = 5;
-
-    [SerializeField]
-    private int columnsCount = 5;
-
-    [SerializeField]
-    private int seed = 0;
-
-    [SerializeField]
-    private Color[] colors;
-
-    public int RowsCount => rowsCount;
-    public int ColumnsCount => columnsCount;
-    public int Seed => seed;
-    public BlockData[] BlockDataPool
+    public class GameConfig : MonoBehaviour, IGameConfig
     {
-        get
+        [SerializeField]
+        private int rowsCount = 5;
+
+        [SerializeField]
+        private int columnsCount = 5;
+
+        [SerializeField]
+        private int seed = 0;
+
+        [SerializeField]
+        private Color[] colors;
+
+        public int RowsCount => rowsCount;
+        public int ColumnsCount => columnsCount;
+        public int Seed => seed;
+        public BlockData[] BlockDataPool
         {
-            var typesPool = new BlockData[colors.Length];
-            for(var i = 0; i < typesPool.Length; ++i)
+            get
             {
-                typesPool[i] = new BlockData(i);
+                var typesPool = new BlockData[colors.Length];
+                for (var i = 0; i < typesPool.Length; ++i)
+                {
+                    typesPool[i] = new BlockData(i);
+                }
+                return typesPool;
             }
-            return typesPool;
         }
-    }
 
-    public Color GetColorForBlock(BlockData blockData)
-    {
-        return colors[blockData.Type];
+        public Color GetColorForBlock(BlockData blockData)
+        {
+            return colors[blockData.Type];
+        }
     }
 }

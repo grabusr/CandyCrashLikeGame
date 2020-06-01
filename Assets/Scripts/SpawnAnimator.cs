@@ -1,16 +1,14 @@
-﻿using core;
-
-namespace view
+﻿namespace QuickTurnStudio.CandyCrashLike.UnityView
 {
     class SpawnAnimator : IBlockAnimator
     {
         private IAnimatedView view;
-        private Coordinate spawnCoordinate;
-        private BlockData blockData;
+        private Core.Coordinate spawnCoordinate;
+        private Core.BlockData blockData;
 
         public SpawnAnimator(IAnimatedView view,
-                             Coordinate spawnCoordinate,
-                             BlockData blockData)
+                             Core.Coordinate spawnCoordinate,
+                             Core.BlockData blockData)
         {
             this.view = view;
             this.spawnCoordinate = spawnCoordinate;

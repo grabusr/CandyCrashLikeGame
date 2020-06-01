@@ -1,12 +1,11 @@
 ﻿using UnityEngine;
-using core;
 
-namespace view
+namespace QuickTurnStudio.CandyCrashLike.UnityView
 {
     public interface IBoardView
     {        
         void AnimationEnded(Element element);
-        Vector3 GetPositionOfCoordinate(Coordinate coordinate);
+        Vector3 GetPositionOfCoordinate(Core.Coordinate coordinate);
         bool IsAnimating();
     }
 }

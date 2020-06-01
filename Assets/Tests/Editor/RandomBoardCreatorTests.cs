@@ -3,9 +3,9 @@
 using NUnit.Framework;
 using NSubstitute;
 
-using core;
+using QuickTurnStudio.CandyCrashLike.Core;
 
-namespace LocalModel.Tests
+namespace QuickTurnStudio.CandyCrashLike.LocalModel.Tests
 {
     public class RandomBoardCreatorTests
     {
@@ -47,4 +47,4 @@ namespace LocalModel.Tests
         }
     }
 
-} // namespace LocalModel.Tests
+}

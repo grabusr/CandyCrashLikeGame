@@ -1,4 +1,4 @@
-﻿namespace view
+﻿namespace QuickTurnStudio.CandyCrashLike.UnityView
 {
     public interface IBlockAnimator
     {

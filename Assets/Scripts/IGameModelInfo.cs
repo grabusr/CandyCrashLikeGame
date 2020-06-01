@@ -1,4 +1,4 @@
-﻿namespace core
+﻿namespace QuickTurnStudio.CandyCrashLike.Core
 {
     public interface IGameModelInfo
     {
@@ -6,5 +6,4 @@
         int RowsCount { get; }
         BlockData[,] Board { get; }
     }
-
-} // namespace core
+}

@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 
-using core;
+using QuickTurnStudio.CandyCrashLike.Core;
 
-namespace LocalModel
+namespace QuickTurnStudio.CandyCrashLike.LocalModel
 {
     class SeededRandomTypeProvider : IBlockDataProvider
     {

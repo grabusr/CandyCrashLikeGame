@@ -1,16 +1,13 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
-using core;
-using LocalModel;
-using view;
+using QuickTurnStudio.CandyCrashLike.Core;
 
-namespace view
+namespace QuickTurnStudio.CandyCrashLike.UnityView
 {
-    public class BoardViewManager : MonoBehaviour, core.ICandyCrashLikeView, IBoardView, IAnimatedView
+    public class BoardViewManager : MonoBehaviour, ICandyCrashLikeView, IBoardView, IAnimatedView
     {
         [SerializeField] private PlayerController playerController;
-        [SerializeField] private GameConfig gameConfig;
+        [SerializeField] private Config.GameConfig gameConfig;
         [SerializeField] private Transform elementPrefab;
         [SerializeField] private float blockGridSize = 3.0F;
 

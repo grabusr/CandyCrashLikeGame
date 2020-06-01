@@ -1,11 +1,10 @@
 ﻿using System.Collections.Generic;
-using core;
 
-namespace LocalModel
+namespace QuickTurnStudio.CandyCrashLike.LocalModel
 { 
     public interface IBlockDataProvider
     {
-        BlockData GetBlockData();
-        BlockData GetBlockDataFromPool(List<BlockData> typesPool);
+        Core.BlockData GetBlockData();
+        Core.BlockData GetBlockDataFromPool(List<Core.BlockData> typesPool);
     }
-} // namespace model
+}

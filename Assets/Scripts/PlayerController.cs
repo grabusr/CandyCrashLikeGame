@@ -1,25 +1,25 @@
 ﻿using UnityEngine;
 
-using core;
-using LocalModel;
+using QuickTurnStudio.CandyCrashLike.Core;
 
-namespace view
+namespace QuickTurnStudio.CandyCrashLike.UnityView
 {
     public class PlayerController : MonoBehaviour, IBoardController
     {
         // TODO use interfaces from inspector instead of implementation types
         [SerializeField] private BoardViewManager gameView;
-        [SerializeField] private GameConfig gameConfig;
+        [SerializeField] private Config.GameConfig gameConfig;
 
-        private core.GameController gameController;
+        private Core.GameController gameController;
         private Element selectedElement;
 
         public void Start()
         {
-            var randomDevice = new SeededRandomTypeProvider(gameConfig.Seed, gameConfig.BlockDataPool);
-            var boardProvider = new RandomBoardGenerator(randomDevice, gameConfig);
+            var randomDevice = new LocalModel.SeededRandomTypeProvider(gameConfig.Seed,
+                                                                       gameConfig.BlockDataPool);
+            var boardProvider = new LocalModel.RandomBoardGenerator(randomDevice, gameConfig);
 
-            var gameModel = new LocalGameModel(boardProvider, randomDevice);
+            var gameModel = new LocalModel.LocalGameModel(boardProvider, randomDevice);
 
             gameController = new GameController(gameModel);
             gameController.AddGameView(gameView);

@@ -1,21 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
-using core;
+using QuickTurnStudio.CandyCrashLike.Core;
 
-namespace LocalModel
+namespace QuickTurnStudio.CandyCrashLike.LocalModel
 {
     public class Board
     {
         private BlockData[,] fields;
-        private readonly int rowsCount;
-        private readonly int columnsCount;
+        public int RowsCount { get; }
+        public int ColumnsCount { get; }
 
         public Board(int rowsCount, int columnsCount)
         {
             fields = new BlockData[rowsCount, columnsCount];
-            this.rowsCount = rowsCount;
-            this.columnsCount = columnsCount;
+            this.RowsCount = rowsCount;
+            this.ColumnsCount = columnsCount;
         }
 
         public BlockData this[int row, int column]
@@ -28,16 +27,6 @@ namespace LocalModel
         {
             get => fields[coordinate.Row, coordinate.Column];
             set => fields[coordinate.Row, coordinate.Column] = value;
-        }
-
-        public int RowsCount
-        {
-            get => rowsCount;
-        }
-
-        public int ColumnsCount
-        {
-            get => columnsCount;
         }
 
         public void SwapFields(Coordinate coord1, Coordinate coord2)

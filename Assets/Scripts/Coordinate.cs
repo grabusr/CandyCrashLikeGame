@@ -1,31 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace core
+﻿namespace QuickTurnStudio.CandyCrashLike.Core
 {
     public struct Coordinate
     {
-        private readonly int row;
-        private readonly int column;
+        public int Row { get; }
+        public int Column { get; }
 
         public Coordinate(int row, int column)
         {
-            this.row = row;
-            this.column = column;
-        }
-
-        public int Row
-        {
-            get => row;
-        }
-
-        public int Column
-        {
-            get => column;
-        }
+            this.Row = row;
+            this.Column = column;
+        }        
 
         public override bool Equals(object obj)
         {
@@ -34,12 +18,12 @@ namespace core
                 return false;
             }
             var coordinate = (Coordinate)obj;
-            return row == coordinate.row && column == coordinate.column;
+            return Row == coordinate.Row && Column == coordinate.Column;
         }
 
         public override string ToString()
         {
-            return "(" + row + ", " + column + ")";
+            return "(" + Row + ", " + Column + ")";
         }
     }
-} // namespace core
+}
