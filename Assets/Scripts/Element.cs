@@ -7,8 +7,10 @@ namespace view
 {
     public class Element : MonoBehaviour
     {
-        [SerializeField]
-        private float swapTime = 0.5F;
+        [SerializeField] private float swapTime = 0.5F;
+        [SerializeField] private float spawnTime = 0.8F;
+        [SerializeField] private float destroyTime = 0.43F;
+
         private GameConfigComponent gameConfig;
 
         private BlockData blockData;
@@ -59,7 +61,15 @@ namespace view
         {            
             StartCoroutine(AnimateScaing(new Vector3(0.0F, 0.0F, 0.0F),
                                          new Vector3(1.0F, 1.0F, 1.0F),
-                                         swapTime));
+                                         spawnTime));
+        }
+
+        public void AnimateDestroy()
+        {
+            StartCoroutine(AnimateScaing(new Vector3(1.0F, 1.0F, 1.0F),
+                                         new Vector3(0.0F, 0.0F, 0.0F),
+                                         destroyTime));
+            //Destroy(this, destroyTime);
         }
 
         IEnumerator AnimateScaing(Vector3 from, Vector3 to, float duration)

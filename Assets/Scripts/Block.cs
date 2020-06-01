@@ -28,9 +28,9 @@ namespace core
             get => coordinate;
         }
 
-        public int Type
+        public BlockData BlockData
         {
-            get => blockData.Type;
+            get => blockData;
         }
     }
 } // namespace core
