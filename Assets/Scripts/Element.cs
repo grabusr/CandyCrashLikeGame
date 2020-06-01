@@ -55,6 +55,29 @@ namespace view
             StartCoroutine(AnimateMove(coordinate, swapTime));
         }
 
+        public void AnimateSpawn()
+        {            
+            StartCoroutine(AnimateScaing(new Vector3(0.0F, 0.0F, 0.0F),
+                                         new Vector3(1.0F, 1.0F, 1.0F),
+                                         swapTime));
+        }
+
+        IEnumerator AnimateScaing(Vector3 from, Vector3 to, float duration)
+        {
+            float time = 0f;
+            transform.localScale = from;
+            while (time <= duration)
+            {
+                time = time + Time.deltaTime;
+                float percent = Mathf.Clamp01(time / duration);
+                float factor = Mathf.Sin(percent * Mathf.PI * 0.5F);
+                transform.localScale = Vector3.Lerp(from, to, factor);
+
+                yield return null;
+            }
+            boardView.AnimationEnded(this);
+        }
+
         IEnumerator AnimateMove(Coordinate toCoord, float duration)
         {
             float time = 0f;

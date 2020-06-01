@@ -26,10 +26,10 @@ namespace view
 
         public void Start()
         {
-            var randomDevice = new SeededRandomTypeProvider(gameConfig.Seed);
+            var randomDevice = new SeededRandomTypeProvider(gameConfig.Seed, gameConfig.BlockDataPool);
             var boardProvider = new RandomBoardGenerator(randomDevice, gameConfig);
 
-            gameController = new GameController(new LocalGameModel(boardProvider));
+            gameController = new GameController(new LocalGameModel(boardProvider, randomDevice));
             gameController.AddGameView(this);
         }
 
@@ -75,9 +75,10 @@ namespace view
     
         private Element SpawnElement(Coordinate coordinate, BlockData blockData)
         {
-            //var gameObject = Instantiate(elementPrefab, GetPositionOfCoordinate(coordinate), Quaternion.identity);
-            var gameObject = Instantiate(elementPrefab, new Vector3(), Quaternion.identity);
-            gameObject.transform.SetParent(this.transform);
+            var gameObject = Instantiate(elementPrefab,
+                                         GetPositionOfCoordinate(coordinate),
+                                         Quaternion.identity,
+                                         this.transform);
 
             var element = gameObject.GetComponent<Element>();
             element.SetGameConfig(gameConfig);
@@ -85,8 +86,7 @@ namespace view
             element.SetBoardView(this);
 
             animatedElements.Add(element);
-            element.MoveToPosition(coordinate);
-            //element.Coordinate = coordinate;
+            element.AnimateSpawn();
 
             return element;
         }

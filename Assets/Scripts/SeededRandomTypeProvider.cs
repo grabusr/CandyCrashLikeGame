@@ -10,10 +10,11 @@ namespace LocalModel
         private Random randomDevice;
         private BlockData[] typesPool;
 
-        public SeededRandomTypeProvider(int seed, List<BlockData> typesPool)
+        public SeededRandomTypeProvider(int seed, BlockData[] typesPool)
         {
             randomDevice = new Random(seed);
-            this.typesPool = typesPool.ToArray();
+            this.typesPool = new BlockData[typesPool.Length];
+            typesPool.CopyTo(this.typesPool, 0);
         }
 
         public BlockData GetBlockData()
