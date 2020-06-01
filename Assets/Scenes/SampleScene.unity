@@ -199,11 +199,11 @@ MonoBehaviour:
   columnsCount: 9
   seed: 1
   colors:
-  - {r: 0, g: 0.9150943, b: 0.26022837, a: 1}
-  - {r: 1, g: 0, b: 0, a: 1}
-  - {r: 0, g: 0.20977783, b: 1, a: 1}
-  - {r: 1, g: 0.61737454, b: 0, a: 1}
-  - {r: 0.89106715, g: 1, b: 0, a: 1}
+  - {r: 0.29803923, g: 0.19999999, b: 1, a: 0.8}
+  - {r: 1, g: 0.19999999, b: 0.29803923, a: 0.8}
+  - {r: 0.19999999, g: 1, b: 0.37647057, a: 0.8}
+  - {r: 1, g: 0.5882353, b: 0.19999999, a: 0.8}
+  - {r: 0.9137255, g: 1, b: 0.19999999, a: 0.8}
 --- !u!4 &479914293
 Transform:
   m_ObjectHideFlags: 0
@@ -254,7 +254,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.2924528, g: 0, b: 0, a: 0}
+  m_BackGroundColor: {r: 0.092, g: 0.092, b: 0.092, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0

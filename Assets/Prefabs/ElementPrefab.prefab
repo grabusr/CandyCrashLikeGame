@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7824210347770289821}
   - component: {fileID: 3150103744129760755}
   m_Layer: 0
-  m_Name: Element
+  m_Name: ElementPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -95,6 +95,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5891f252b0d6bc546932a1f216f3e277, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  swapTime: 0.5
+  spawnTime: 0.8
+  destroyTime: 0.4
+  hoveAlphaFactor: 0.8
 --- !u!61 &3150103744129760755
 BoxCollider2D:
   m_ObjectHideFlags: 0

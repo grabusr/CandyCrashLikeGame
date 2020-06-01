@@ -10,6 +10,7 @@ namespace QuickTurnStudio.CandyCrashLike.UnityView
         [SerializeField] private float swapTime = 0.5F;
         [SerializeField] private float spawnTime = 0.8F;
         [SerializeField] private float destroyTime = 0.43F;
+        [SerializeField] private float hoveAlphaFactor = 0.8F;
 
         private Config.GameConfig gameConfig;
 
@@ -112,7 +113,7 @@ namespace QuickTurnStudio.CandyCrashLike.UnityView
                 return;
             }
             var color = gameConfig.GetColorForBlock(blockData);
-            color.a = 0.6F;
+            color.a *= hoveAlphaFactor;
             SetColor(color);
         }
 
