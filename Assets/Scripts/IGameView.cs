@@ -1,6 +1,6 @@
 ﻿namespace QuickTurnStudio.CandyCrashLike.Core
 {
-    public interface ICandyCrashLikeView
+    public interface IGameView
     {
         void Init(IGameModelInfo gameModelInfo);
         void OnMoveEvent(MoveResult[] moveResults);

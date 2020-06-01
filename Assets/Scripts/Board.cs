@@ -178,4 +178,4 @@ namespace QuickTurnStudio.CandyCrashLike.LocalModel
         }
         
     }
-} // namespace LocalModel
+}

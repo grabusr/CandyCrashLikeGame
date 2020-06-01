@@ -10,7 +10,7 @@ namespace QuickTurnStudio.CandyCrashLike.LocalModel.Tests
     public class RandomBoardCreatorTests
     {
         [Test]
-        public void GeneratingTest()
+        public void GeneratorAvoidsPlacingMatchDuringGenerating()
         {
             // given
             var gameConfig = Substitute.For<IGameConfig>();
@@ -46,5 +46,4 @@ namespace QuickTurnStudio.CandyCrashLike.LocalModel.Tests
             Assert.AreEqual(0, generatedBoard[2, 2].Type);
         }
     }
-
 }

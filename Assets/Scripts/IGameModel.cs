@@ -2,7 +2,7 @@
 
 namespace QuickTurnStudio.CandyCrashLike.Core
 {
-    public interface ICandyCrashLikeModel : IGameModelInfo
+    public interface IGameModel : IGameModelInfo
     {
         List<MoveResult> SwapElements(SwapData swapData);
     }

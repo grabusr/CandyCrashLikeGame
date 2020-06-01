@@ -10,7 +10,5 @@
         {
             this.Type = type;
         }
-
-        
     }
 }

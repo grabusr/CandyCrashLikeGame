@@ -4,7 +4,7 @@ using QuickTurnStudio.CandyCrashLike.Core;
 
 namespace QuickTurnStudio.CandyCrashLike.UnityView
 {
-    public class BoardViewManager : MonoBehaviour, ICandyCrashLikeView, IBoardView, IAnimatedView
+    public class BoardViewManager : MonoBehaviour, IGameView, IBoardView, IAnimatedView
     {
         [SerializeField] private PlayerController playerController;
         [SerializeField] private Config.GameConfig gameConfig;
@@ -199,4 +199,4 @@ namespace QuickTurnStudio.CandyCrashLike.UnityView
             return elements.Find(element => element.Coordinate.Equals(coordinate));
         }
     }
-} // namespace view
+}

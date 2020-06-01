@@ -4,7 +4,7 @@ using QuickTurnStudio.CandyCrashLike.Core;
 
 namespace QuickTurnStudio.CandyCrashLike.LocalModel
 {
-    public class LocalGameModel : ICandyCrashLikeModel
+    public class LocalGameModel : IGameModel
     {
         IBlockDataProvider blockProvider;
         private Board board;

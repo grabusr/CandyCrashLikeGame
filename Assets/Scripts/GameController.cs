@@ -4,15 +4,15 @@ namespace QuickTurnStudio.CandyCrashLike.Core
 {
     public class GameController
     {
-        private ICandyCrashLikeModel gameModel;
-        private List<ICandyCrashLikeView> gameViews = new List<ICandyCrashLikeView>();
+        private IGameModel gameModel;
+        private List<IGameView> gameViews = new List<IGameView>();
 
-        public GameController(ICandyCrashLikeModel gameModel)
+        public GameController(IGameModel gameModel)
         {
             this.gameModel = gameModel;
         }
 
-        public void AddGameView(ICandyCrashLikeView view)
+        public void AddGameView(IGameView view)
         {
             if (null == view)
             {
@@ -43,4 +43,4 @@ namespace QuickTurnStudio.CandyCrashLike.Core
             }
         }
     }
-} // namespace core
+}
