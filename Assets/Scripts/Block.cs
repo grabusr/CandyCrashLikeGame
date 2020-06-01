@@ -7,9 +7,9 @@ namespace core
         private readonly Coordinate coordinate;
         private readonly BlockData blockData;
         
-        public Block(int row, int column, BlockData blockData)
+        public Block(Coordinate coordinate, BlockData blockData)
         {
-            coordinate = new Coordinate(row, column);
+            this.coordinate = coordinate;
             this.blockData = blockData;
         }
         

@@ -130,6 +130,7 @@ namespace LocalModel
         private List<MoveElementData> ApplayGravity()
         {
             var moveElementData = new List<MoveElementData>();
+
             var rowsToProcess = RowsCount - 1;
             for (var row = 0; row < rowsToProcess; ++row)
             {
@@ -158,5 +159,23 @@ namespace LocalModel
                 }
             }
         }
+
+        public List<Coordinate> GetEmptyFields()
+        {
+            var emptyFields = new List<Coordinate>();
+            for (var row = 0; row < RowsCount; ++row)
+            {
+                for (var column = 0; column < ColumnsCount; ++column)
+                {
+                    if (fields[row, column].Type != BlockData.invalidColorId)
+                    {
+                        continue;
+                    }
+                    emptyFields.Add(new Coordinate(row, column));
+                }
+            }
+            return emptyFields;
+        }
+        
     }
 } // namespace LocalModel

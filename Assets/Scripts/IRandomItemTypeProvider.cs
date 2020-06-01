@@ -3,8 +3,9 @@ using core;
 
 namespace LocalModel
 { 
-    public interface IRandomTypeProvider
+    public interface IBlockDataProvider
     {
-        BlockData GetRandomElementType(List<BlockData> typesPool);
+        BlockData GetBlockData();
+        BlockData GetBlockDataFromPool(List<BlockData> typesPool);
     }
 } // namespace model

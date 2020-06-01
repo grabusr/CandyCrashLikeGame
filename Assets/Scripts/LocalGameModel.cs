@@ -7,12 +7,14 @@ namespace LocalModel
 
     public class LocalGameModel : ICandyCrashLikeModel
     {
+        IBlockDataProvider blockProvider;
         private Board board;
         private readonly int minimalElementsCountMatch = 3;
 
-        public LocalGameModel(IBoardProvider boardProvider)
+        public LocalGameModel(IBoardProvider boardProvider, IBlockDataProvider blockProvider)
         {
             board = boardProvider.CreateBoard();
+            this.blockProvider = blockProvider;
         }
 
         public int RowsCount => board.RowsCount;
@@ -53,12 +55,23 @@ namespace LocalModel
                 board.SwapFields(swapData.First, swapData.Second);
                 return null;
             }
+                        
+            var movedByGravityElements = board.RemoveBlocks(matches);
+            var emptyFields = board.GetEmptyFields();
 
-
-            var swapResult = CreateSwapResult(swapData);
+            var spawnedBlocks = new List<Block>();
+            foreach (var field in emptyFields)
+            {
+                var blockData = GetNewBlockData();
+                board[field] = blockData;
+                spawnedBlocks.Add(new Block(field, blockData));
+            }
 
             var moveResults = new List<MoveResult>();
-            moveResults.Add(swapResult);
+            moveResults.Add(CreateSwapResult(swapData));
+            moveResults.Add(CreateMatchDestroyResult(movedByGravityElements,
+                                                     matches,
+                                                     spawnedBlocks));
 
             return moveResults;
         }
@@ -73,6 +86,13 @@ namespace LocalModel
             return new MoveResult(movesData);
         }
 
+        private MoveResult CreateMatchDestroyResult(MoveElementData[] movedElements,
+                          List<Coordinate[]> matches,
+                          List<Block> spawnedBlocks)
+        {
+            return new MoveResult(movedElements, matches, spawnedBlocks.ToArray());
+        }
+
         private bool IsValidCoordinate(Coordinate coordinate)
         {
             return coordinate.Column >= 0 && coordinate.Column < board.ColumnsCount
@@ -83,6 +103,11 @@ namespace LocalModel
         {
             return Math.Abs(coordinate1.Row - coordinate2.Row)
                 + Math.Abs(coordinate1.Column - coordinate2.Column) == 1;
+        }
+
+        private BlockData GetNewBlockData()
+        {
+            return blockProvider.GetBlockData();
         }
     }
 

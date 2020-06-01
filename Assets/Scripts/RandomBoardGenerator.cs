@@ -7,10 +7,10 @@ namespace LocalModel
     {
         private const int invalidType = -1;
         private Board board;
-        IRandomTypeProvider randomTypeProvider;
+        IBlockDataProvider randomTypeProvider;
         IGameConfig gameConfig;
 
-        public RandomBoardGenerator(IRandomTypeProvider randomTypeProvider, IGameConfig gameConfig)
+        public RandomBoardGenerator(IBlockDataProvider randomTypeProvider, IGameConfig gameConfig)
         {
             this.randomTypeProvider = randomTypeProvider;
             this.gameConfig = gameConfig;
@@ -27,7 +27,7 @@ namespace LocalModel
                 for (var column = 0; column < columnsCount; ++column)
                 {
                     var allowedTypesPool = GetAllowedTypesForField(row, column);
-                    board[row, column] = randomTypeProvider.GetRandomElementType(allowedTypesPool);
+                    board[row, column] = randomTypeProvider.GetBlockDataFromPool(allowedTypesPool);
                 }
             }
 
