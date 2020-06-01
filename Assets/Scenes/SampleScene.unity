@@ -150,8 +150,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de92502711df3f842b411cfa73b853b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rowsCount: 5
-  columnsCount: 5
+  rowsCount: 3
+  columnsCount: 3
   seed: 1
   colors:
   - {r: 0, g: 0.9150943, b: 0.26022837, a: 1}
@@ -209,7 +209,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 1, g: 1, b: 1, a: 0}
+  m_BackGroundColor: {r: 0.2924528, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -285,7 +285,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2baa454040190fa42a44340d8fe77e53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blockSprite: {fileID: 0}
   gameConfig: {fileID: 479914292}
   elementPrefab: {fileID: 7824210347770289820, guid: 3e0a637cd1632444eaa60cbef8063bfe,
     type: 3}

@@ -5,7 +5,7 @@
         private readonly Coordinate position1;
         private readonly Coordinate position2;
 
-        SwapData(Coordinate position1, Coordinate position2)
+        public SwapData(Coordinate position1, Coordinate position2)
         {
             this.position1 = position1;
             this.position2 = position2;

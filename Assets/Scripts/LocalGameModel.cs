@@ -65,8 +65,8 @@ namespace LocalModel
 
         private bool IsValidCoordinate(Coordinate coordinate)
         {
-            return coordinate.Column > 0 && coordinate.Column < board.ColumnsCount
-                && coordinate.Row > 0 && coordinate.Row < board.RowsCount;
+            return coordinate.Column >= 0 && coordinate.Column < board.ColumnsCount
+                && coordinate.Row >= 0 && coordinate.Row < board.RowsCount;
         }
 
         private bool AreCoordinateNeighbours(Coordinate coordinate1, Coordinate coordinate2)

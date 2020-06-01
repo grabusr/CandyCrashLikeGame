@@ -31,6 +31,11 @@ namespace core
         {
             return row == coordinate.row && column == coordinate.column;
         }
+
+        public string ToString()
+        {
+            return "(" + row + ", " + column + ")";
+        }
 }
 
 } // namespace core
