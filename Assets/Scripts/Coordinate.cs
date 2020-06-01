@@ -27,15 +27,19 @@ namespace core
             get => column;
         }
 
-        public bool Equals(Coordinate coordinate)
+        public override bool Equals(object obj)
         {
+            if (null == obj)
+            {
+                return false;
+            }
+            var coordinate = (Coordinate)obj;
             return row == coordinate.row && column == coordinate.column;
         }
 
-        public string ToString()
+        public override string ToString()
         {
             return "(" + row + ", " + column + ")";
         }
-}
-
+    }
 } // namespace core

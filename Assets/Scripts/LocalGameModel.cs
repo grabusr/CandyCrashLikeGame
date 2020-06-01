@@ -8,6 +8,7 @@ namespace LocalModel
     public class LocalGameModel : ICandyCrashLikeModel
     {
         private Board board;
+        private readonly int minimalElementsCountMatch = 3;
 
         public LocalGameModel(IBoardProvider boardProvider)
         {
@@ -17,7 +18,8 @@ namespace LocalModel
         public int RowsCount => board.RowsCount;
         public int ColumnsCount => board.ColumnsCount;
 
-        public BlockData[,] Board {
+        public BlockData[,] Board
+        {
             get
             {
                 var blockDataBoard = new BlockData[RowsCount, ColumnsCount];
@@ -34,30 +36,38 @@ namespace LocalModel
             }
         }
 
-        public MoveResult[] SwapElements(SwapData swapData)
+        public List<MoveResult> SwapElements(SwapData swapData)
         {
-            if (!IsValidCoordinate(swapData.Position1)
-                || !IsValidCoordinate(swapData.Position2)
-                || !AreCoordinateNeighbours(swapData.Position1, swapData.Position2))
+            if (!IsValidCoordinate(swapData.First)
+                || !IsValidCoordinate(swapData.Second)
+                || !AreCoordinateNeighbours(swapData.First, swapData.Second))
             {
                 return null;
             }           
 
-            board.SwapFields(swapData.Position1, swapData.Position2);
+            board.SwapFields(swapData.First, swapData.Second);
 
-            var moveResults = new List<MoveResult>
+            var matches = board.GetMatches(minimalElementsCountMatch);
+            if (matches.Count == 0)
             {
-                CreateSwapResult(swapData)
-            };
+                board.SwapFields(swapData.First, swapData.Second);
+                return null;
+            }
 
-            return moveResults.ToArray();
+
+            var swapResult = CreateSwapResult(swapData);
+
+            var moveResults = new List<MoveResult>();
+            moveResults.Add(swapResult);
+
+            return moveResults;
         }
 
         private MoveResult CreateSwapResult(SwapData swapData)
-        {
+        {   
             var movesData = new MoveElementData[]{
-                new MoveElementData(swapData.Position1, swapData.Position2),
-                new MoveElementData(swapData.Position2, swapData.Position1),
+                new MoveElementData(swapData.First, swapData.Second),
+                new MoveElementData(swapData.Second, swapData.First),
             };
 
             return new MoveResult(movesData);

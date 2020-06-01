@@ -12,6 +12,7 @@ namespace LocalModel.Tests
         [Test]
         public void GeneratingTest()
         {
+            // given
             var gameConfig = Substitute.For<IGameConfig>();
             gameConfig.RowsCount.Returns(3);
             gameConfig.ColumnsCount.Returns(3);
@@ -27,7 +28,10 @@ namespace LocalModel.Tests
 
             var sut = new RandomBoardGenerator(randomDevice, gameConfig);
 
+            // when:
             var generatedBoard = sut.CreateBoard();
+
+            // then:
             // should be
             // 0 0 1
             // 0 0 1

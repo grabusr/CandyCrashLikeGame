@@ -35,11 +35,11 @@ namespace core
             return true;
         }
 
-        private void InformViewsAboutMoveResult(MoveResult[] moveResults)
+        private void InformViewsAboutMoveResult(List<MoveResult> moveResults)
         {
             foreach (var view in gameViews)
             {
-                view.OnMoveEvent(moveResults);
+                view.OnMoveEvent(moveResults.ToArray());
             }
         }
     }

@@ -150,8 +150,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de92502711df3f842b411cfa73b853b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rowsCount: 3
-  columnsCount: 3
+  rowsCount: 9
+  columnsCount: 9
   seed: 1
   colors:
   - {r: 0, g: 0.9150943, b: 0.26022837, a: 1}

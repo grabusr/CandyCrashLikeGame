@@ -20,5 +20,17 @@
         {
             get => endField;
         }
+
+        public override bool Equals(object obj)
+        {
+            if (null == obj)
+            {
+                return false;
+            }
+            var moveElementData = (MoveElementData)obj;
+
+            return Start.Equals(moveElementData.Start)
+                && Destination.Equals(moveElementData.Destination);
+        }
     }
 } // namespace core

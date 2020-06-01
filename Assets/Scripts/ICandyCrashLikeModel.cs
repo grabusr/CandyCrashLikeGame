@@ -5,6 +5,6 @@ namespace core
 {
     public interface ICandyCrashLikeModel : IGameModelInfo
     {
-        MoveResult[] SwapElements(SwapData swapData);
+        List<MoveResult> SwapElements(SwapData swapData);
     }
 } // namespace core
