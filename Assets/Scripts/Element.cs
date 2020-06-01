@@ -11,20 +11,26 @@ namespace view
         [SerializeField] private float spawnTime = 0.8F;
         [SerializeField] private float destroyTime = 0.43F;
 
-        private GameConfigComponent gameConfig;
+        private GameConfig gameConfig;
 
         private BlockData blockData;
-        private Coordinate coordinate;
-        private IBoardView boardView;
+        private IBoardView view;
+        private IBoardController boardController;        
+        private bool clickStarted = false;
 
-        bool clickStarted = false;
+        public Coordinate Coordinate { get; set; }
 
         public void SetBoardView(IBoardView view)
         {
-            boardView = view;
+            this.view = view;
         }
 
-        public void SetGameConfig(GameConfigComponent gameConfig)
+        public void SetPlayerController(IBoardController controller)
+        {
+            boardController = controller;
+        }
+
+        public void SetGameConfig(GameConfig gameConfig)
         {
             this.gameConfig = gameConfig;
         }
@@ -34,13 +40,7 @@ namespace view
             this.blockData = blockData;
             var color = gameConfig.GetColorForBlock(blockData);
             SetColor(color);
-        }
-        
-        public Coordinate Coordinate
-        {
-            get => coordinate;
-            set => coordinate = value;
-        }
+        }        
 
         public void Select()
         {
@@ -71,7 +71,7 @@ namespace view
                                          destroyTime));
         }
 
-        IEnumerator AnimateScaing(Vector3 from, Vector3 to, float duration)
+        private IEnumerator AnimateScaing(Vector3 from, Vector3 to, float duration)
         {
             float time = 0f;
             transform.localScale = from;
@@ -84,14 +84,14 @@ namespace view
 
                 yield return null;
             }
-            boardView.AnimationEnded(this);
+            view.AnimationEnded(this);
         }
 
-        IEnumerator AnimateMove(Coordinate toCoord, float duration)
+        private IEnumerator AnimateMove(Coordinate toCoord, float duration)
         {
             float time = 0f;
             var from = transform.position;
-            var destination = boardView.GetPositionOfCoordinate(toCoord);
+            var destination = view.GetPositionOfCoordinate(toCoord);
             while (time <= duration)
             {
                 time = time + Time.deltaTime;
@@ -101,12 +101,16 @@ namespace view
 
                 yield return null;
             }
-            this.coordinate = toCoord;
-            boardView.AnimationEnded(this);
+            this.Coordinate = toCoord;
+            view.AnimationEnded(this);
         }
 
         private void OnMouseEnter()
         {
+            if (view.IsAnimating())
+            {
+                return;
+            }
             var color = gameConfig.GetColorForBlock(blockData);
             color.a = 0.6F;
             SetColor(color);
@@ -114,6 +118,10 @@ namespace view
 
         private void OnMouseExit()
         {
+            if (view.IsAnimating())
+            {
+                return;
+            }
             var color = gameConfig.GetColorForBlock(blockData);
             SetColor(color);
             if (clickStarted)
@@ -124,21 +132,29 @@ namespace view
 
         private void OnMouseDown()
         {
+            if (view.IsAnimating())
+            {
+                return;
+            }
             clickStarted = true;
         }
 
         private void OnMouseUp()
         {
+            if (view.IsAnimating())
+            {
+                return;
+            }
             if (!clickStarted)
             {
                 return;
             }
             clickStarted = false;
-            if (null == boardView)
+            if (null == view)
             {
                 return;
             }
-            boardView.OnBlockSelect(this);
+            boardController.OnBlockClicked(this);
         }
 
         private void SetColor(Color color)

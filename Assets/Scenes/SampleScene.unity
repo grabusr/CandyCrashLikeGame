@@ -121,6 +121,51 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &444224650
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 444224652}
+  - component: {fileID: 444224651}
+  m_Layer: 0
+  m_Name: PlayerController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &444224651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 444224650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c08c8c6b3b018e4dacd52b0801bbc93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameView: {fileID: 1398630691}
+  gameConfig: {fileID: 479914292}
+--- !u!4 &444224652
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 444224650}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.715453, y: -0.9429294, z: -4.9489856}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &479914291
 GameObject:
   m_ObjectHideFlags: 0
@@ -132,7 +177,7 @@ GameObject:
   - component: {fileID: 479914293}
   - component: {fileID: 479914292}
   m_Layer: 0
-  m_Name: GameConfigObject
+  m_Name: GameConfig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -285,9 +330,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2baa454040190fa42a44340d8fe77e53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerController: {fileID: 444224651}
   gameConfig: {fileID: 479914292}
   elementPrefab: {fileID: 7824210347770289820, guid: 3e0a637cd1632444eaa60cbef8063bfe,
     type: 3}
+  blockGridSize: 3
 --- !u!4 &1398630692
 Transform:
   m_ObjectHideFlags: 0

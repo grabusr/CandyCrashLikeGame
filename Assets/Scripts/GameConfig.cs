@@ -4,7 +4,7 @@ using UnityEngine;
 using LocalModel;
 using core;
 
-public class GameConfigComponent : MonoBehaviour, IGameConfig
+public class GameConfig : MonoBehaviour, IGameConfig
 {
     [SerializeField]
     private int rowsCount = 5;
