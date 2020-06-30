@@ -2,8 +2,6 @@
 {
     public interface IGameModelInfo
     {
-        int ColumnsCount { get; }
-        int RowsCount { get; }
-        BlockData[,] Board { get; }
+        IBoardData Board { get; }
     }
 }

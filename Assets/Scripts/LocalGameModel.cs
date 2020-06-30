@@ -19,21 +19,11 @@ namespace QuickTurnStudio.CandyCrashLike.LocalModel
         public int RowsCount => board.RowsCount;
         public int ColumnsCount => board.ColumnsCount;
 
-        public BlockData[,] Board
+        public IBoardData Board
         {
             get
             {
-                var blockDataBoard = new BlockData[RowsCount, ColumnsCount];
-
-                for (var row = 0; row < RowsCount; ++row)
-                {
-                    for (var column = 0; column < ColumnsCount; ++column)
-                    {
-                        blockDataBoard[row, column] = board[row, column];
-                    }
-                }
-
-                return blockDataBoard;
+                return new BoardData(board);
             }
         }
 

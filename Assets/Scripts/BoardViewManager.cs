@@ -25,11 +25,11 @@ namespace QuickTurnStudio.CandyCrashLike.UnityView
             this.gameModelInfo = gameModelInfo;
             var boardData = gameModelInfo.Board;
 
-            elements = new List<Element>(gameModelInfo.RowsCount * gameModelInfo.ColumnsCount);
+            elements = new List<Element>(gameModelInfo.Board.RowsCount * gameModelInfo.Board.ColumnsCount);
 
-            for (var row = 0; row < gameModelInfo.RowsCount; ++row)
+            for (var row = 0; row < gameModelInfo.Board.RowsCount; ++row)
             {
-                for (var column = 0; column < gameModelInfo.ColumnsCount; ++column)
+                for (var column = 0; column < gameModelInfo.Board.ColumnsCount; ++column)
                 {
                     SpawnBlock(new Coordinate(row, column), boardData[row, column]);
                 }
@@ -70,8 +70,8 @@ namespace QuickTurnStudio.CandyCrashLike.UnityView
 
         public Vector3 GetPositionOfCoordinate(Coordinate coordinate)
         {
-            var middleX = blockGridSize * (gameModelInfo.ColumnsCount - 1) * 0.5F;
-            var middleY = blockGridSize * (gameModelInfo.RowsCount - 1) * 0.5F;
+            var middleX = blockGridSize * (gameModelInfo.Board.ColumnsCount - 1) * 0.5F;
+            var middleY = blockGridSize * (gameModelInfo.Board.RowsCount - 1) * 0.5F;
             return new Vector3(coordinate.Column * blockGridSize - middleX,
                                coordinate.Row * blockGridSize - middleY);
         }
